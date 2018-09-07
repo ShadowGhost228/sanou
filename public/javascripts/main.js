@@ -24,12 +24,12 @@ const app = new Vue ({
         }],
     },
     methods: {
-
-        con: function (message1 , message2){
-            alert("Email "+message1+"Mot de passe "+message2)
+        onChangePage (page) {
+            console.log('onChangePage', page)
+            this.currentPage = page
         }
-    },
-    //component : signin
+    }
+
 })
 
 

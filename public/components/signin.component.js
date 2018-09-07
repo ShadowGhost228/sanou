@@ -22,12 +22,12 @@
 
                             <!-- Email -->
                             <div class="md-form">
-                                <input type="email" id ="materialLoginFormEmail" class="form-control" placeholder="Mail" v-model="mail">
+                                <input type="email" id ="materialLoginFormEmail" class="form-control" placeholder="Mail">
                             </div>
 
                             <!-- Password -->
                             <div class="md-form">
-                                <input type="password" id="materialLoginFormPassword" class="form-control" placeholder="Mot de passe" v-model="pwd">
+                                <input type="password" id="materialLoginFormPassword" class="form-control" placeholder="Mot de passe">
                             </div>
 
                             <div class="d-flex justify-content-around">
@@ -44,17 +44,22 @@
                                 </div>
                                 <div>
                                     
-                                    <a @click="currentPage = 'register'">Créer un compte</a>                          
+                                    <!--<a @click="changeCurrentPage">register</a>-->                                                         
                                     
-                                    <register v-if="currentPage === 'register'">
+                                    <!--<register v-if="currentpage === 'register'">
                                         
-                                    </register>
+                                    </register>-->
+                                    
+                                    <!--<p v-if="currentpage === 'register'">
+                                        Affiche toi
+                                    </p>-->
+                                    
                                 </div>
                             </div>
 
                             <!-- Sign in button -->
 
-                            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" @click="con( mail , pwd )" >Se Connecter</button>
+                            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" >Se Connecter</button>
 
 
                         </form>
@@ -71,8 +76,13 @@
 
 
     Vue.component('signin', {
-        //prop : ['current'],
-        template: signinTemplate
+        props: ['currentpage'],
+        template: signinTemplate,
+        methods: {
+            changeCurrentPage (){
+                this.$emit('changepage', 'register')
+            }
+        }
     })
 
 })()

@@ -60,6 +60,11 @@
                             <i class="fa fa-user"></i>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a @click="currentPage = 'register'" class="nav-link waves-effect">
+                            <i class="fa fa-user-plus"></i>
+                        </a>
+                    </li>
                 </ul>
 
             </div>
@@ -67,13 +72,14 @@
     </nav>
     <!-- Navbar -->
 
-    <signin v-if="currentPage === 'signin'">
+    <signin v-if="currentPage === 'signin'" @changepage="onChangePage" :currentpage="currentPage">
 
     </signin>
 
-    <!--<register v-if="currentPage === 'signin'">
+    <register v-if="currentPage === 'register'">
 
-    </register>-->
+    </register>
+
 
     <!--Main layout-->
     <section v-if="currentPage === 'magasin'" id="magasin">
@@ -162,7 +168,7 @@
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
-<script type="text/javascript" src="javascripts/js/mdb.min.js"></script>
+<script type="text/javascript" src="javascripts//mdb.min.js"></script>
 <!-- Script vue JS -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 <!-- Menu components.js -->
