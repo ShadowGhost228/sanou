@@ -5,7 +5,7 @@
     const signinTemplate =  ` 
         <section id="register">
             <!-- Material form register -->
-            <div class="card">
+            <div class="card offset-6 col-md-4 py-5 px-5 z-depth-4">
 
                 <h5 class="card-header info-color white-text text-center py-4">
                     <strong>Sign up</strong>
