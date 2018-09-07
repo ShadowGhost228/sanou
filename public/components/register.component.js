@@ -40,18 +40,13 @@
                         <!-- Password -->
                         <div class="md-form">
                             <input type="password" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" placeholder="Mot de passe">
-                            <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                                At least 8 characters and 1 digit
-                            </small>
+                           
                         </div>
 
                         <!-- Phone number -->
                         <div class="md-form">
-                            <input type="password" id="materialRegisterFormPhone" class="form-control" aria-describedby="materialRegisterFormPhoneHelpBlock">
-                            <label for="materialRegisterFormPhone">Phone number</label>
-                            <small id="materialRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
-                                Optional - for two step authentication
-                            </small>
+                            <input type="password" id="materialRegisterFormPhone" class="form-control" aria-describedby="materialRegisterFormPhoneHelpBlock" placeholder="Numéro de Téléphone">
+                           
                         </div>
 
                         <!-- Newsletter -->
@@ -63,29 +58,7 @@
                         <!-- Sign up button -->
                         <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Se Connecter</button>
 
-                        <!-- Social register -->
-                        <p>or sign up with:</p>
-
-                        <a type="button" class="btn-floating btn-fb btn-sm">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                        <a type="button" class="btn-floating btn-tw btn-sm">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                        <a type="button" class="btn-floating btn-li btn-sm">
-                            <i class="fa fa-linkedin"></i>
-                        </a>
-                        <a type="button" class="btn-floating btn-git btn-sm">
-                            <i class="fa fa-github"></i>
-                        </a>
-
-                        <hr>
-
-                        <!-- Terms of service -->
-                        <p>By clicking
-                            <em>Sign up</em> you agree to our
-                            <a href="" target="_blank">terms of service</a> and
-                            <a href="" target="_blank">terms of service</a>. </p>
+                       
 
                     </form>
                     <!-- Form -->
