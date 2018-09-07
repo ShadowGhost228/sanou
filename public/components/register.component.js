@@ -21,29 +21,25 @@
                             <div class="col">
                                 <!-- First name -->
                                 <div class="md-form">
-                                    <input type="text" id="materialRegisterFormFirstName" class="form-control">
-                                    <label for="materialRegisterFormFirstName">First name</label>
+                                    <input type="text" id="materialRegisterFormFirstName" class="form-control" placeholder="Prenom">
                                 </div>
                             </div>
                             <div class="col">
                                 <!-- Last name -->
                                 <div class="md-form">
-                                    <input type="email" id="materialRegisterFormLastName" class="form-control">
-                                    <label for="materialRegisterFormLastName">Last name</label>
+                                    <input type="email" id="materialRegisterFormLastName" class="form-control" placeholder="nom">
                                 </div>
                             </div>
                         </div>
 
                         <!-- E-mail -->
                         <div class="md-form mt-0">
-                            <input type="email" id="materialRegisterFormEmail" class="form-control">
-                            <label for="materialRegisterFormEmail">E-mail</label>
+                            <input type="email" id="materialRegisterFormEmail" class="form-control" placeholder="Mail">
                         </div>
 
                         <!-- Password -->
                         <div class="md-form">
-                            <input type="password" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock">
-                            <label for="materialRegisterFormPassword">Password</label>
+                            <input type="password" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" placeholder="Mot de passe">
                             <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                                 At least 8 characters and 1 digit
                             </small>
@@ -65,7 +61,7 @@
                         </div>
 
                         <!-- Sign up button -->
-                        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
+                        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Se Connecter</button>
 
                         <!-- Social register -->
                         <p>or sign up with:</p>
