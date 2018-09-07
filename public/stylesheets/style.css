@@ -1,0 +1,11 @@
+html,
+body,
+.view {
+    height: 100%; }
+
+#magasin {
+    margin-top: 100px;
+}
+
+.page-footer {
+    background-color: #929FBA; }
