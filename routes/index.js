@@ -2,9 +2,23 @@ var express = require('express');
 var router = express.Router();
 
 const list = [{
-    name: 'elemqsdqsdqs1'
+    name: 'Homme'
 }, {
-    name: 'elem2qsdqsdqsd'
+    name: 'Femme'
+}]
+
+const listUsers = [{
+    name : 'Erick',
+    email : 'erick@esiea.fr',
+    password : 'root'
+}, {
+    name : 'Richard',
+    email : 'richard@esiea.fr',
+    password : 'root'
+}, {
+    name : 'Ivanick',
+    email : 'ivanick@esiea.fr',
+    password : 'root'
 }]
 
 router.get('/list', (req, res) => {

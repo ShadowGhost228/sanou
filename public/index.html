@@ -76,13 +76,13 @@
 
     </signin>
 
-    <register v-if="currentPage === 'register'">
+    <register v-else-if="currentPage === 'register'">
 
     </register>
 
 
     <!--Main layout-->
-    <section v-if="currentPage === 'magasin'" id="magasin">
+    <section v-else-if="currentPage === 'magasin'" id="magasin">
         <div class="container">
 
             <menu-categorie v-bind:categorielist="categorielist">
@@ -171,6 +171,8 @@
 <script type="text/javascript" src="javascripts//mdb.min.js"></script>
 <!-- Script vue JS -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<!-- Axios js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>
 <!-- Menu components.js -->
 <script src="components/menu.component.js"></script>
 <!-- products compoments.js -->
