@@ -6,15 +6,10 @@ const app = new Vue ({
     el: '#app',
     data: {
         currentPage : 'magasin',
-        /*genderList: [{
-                name: 'Homme'
-            }, {
-                name: 'Femme'
-            }
-        ],*/
         genderList : [],
         name : '',
-        categorielist: [{
+        categorielist : [],
+        /*categorielist: [{
                 name: 'T-Shirt'
             }, {
                 name: 'Jeans'
@@ -24,16 +19,25 @@ const app = new Vue ({
                 name: 'Pull'
             }, {
                 name: 'Costumes'
-        }],
+        }],*/
+        //lMerge : [[{item : "Erick", item: "Richard"}], [{item : "Erick", item: "Richard"}]]
     },
 
     created () {
         // Ici, l'utilisation d'une fonction flêchée () => {} plutôt que function () {} est primordial !
         // sans fonction fléchée, this.myList = ... ne fonctionnera pas comme prévu
-        this.$http.get('/list')
-            .then(list => {
-                console.log('affichage de ma liste', list)
-                this.genderList = list.data
+        this.$http.get('/listCategorie')
+            .then(listCategorie => {
+                console.log('affichage de ma liste', listCategorie)
+                this.categorielist = listCategorie.data
+            })
+            .catch(err => {
+                console.log('error', err)
+            })
+        this.$http.get('/listGender')
+            .then(listGender => {
+                console.log('affichage de ma liste', listGender)
+                this.genderList = listGender.data
             })
             .catch(err => {
                 console.log('error', err)

@@ -1,12 +1,28 @@
 var express = require('express');
 var router = express.Router();
 
-const list = [{
+
+const listGender = [{
     name: 'Homme'
 }, {
     name: 'Femme'
 }]
 
+const listCategorie = [{
+    name: 'T-Shirt'
+}, {
+    name: 'Jeans'
+}, {
+    name: 'Chaussures'
+}, {
+    name: 'Pull'
+}, {
+    name: 'Costumes'
+}]
+/*const lists = [ [{name: 'Homme'}, {name: 'Femme'}],
+                [{name: 'T-Shirt'}, {name: 'Jeans'}, {name: 'Chaussures'}, {name: 'Pull'}, {name: 'Costumes'}]
+            ]
+*/
 const listUsers = [{
     name : 'Erick',
     email : 'erick@esiea.fr',
@@ -21,8 +37,12 @@ const listUsers = [{
     password : 'root'
 }]
 
-router.get('/list', (req, res) => {
-    res.json(list)
+router.get('/listCategorie', (req, res) => {
+    res.json(listCategorie)
+})
+
+router.get('/listGender', (req, res) => {
+    res.json(listGender)
 })
 
 router.post('/list', (req, res) => {
