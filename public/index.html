@@ -72,7 +72,9 @@
     </nav>
     <!-- Navbar -->
 
-    <signin v-if="currentPage === 'signin'" @signin="onClickSignin" @emailwrite="onWriteEmail"
+    <signin v-if="currentPage === 'signin'" @signin="onClickSignin"
+            @emailwrite="onWriteEmail"
+            @passwordwrite="onWritePassword"
             @changepage="onChangePage" :currentpage="currentPage" :email="email" :password="password">
 
     </signin>

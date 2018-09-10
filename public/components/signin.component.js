@@ -22,14 +22,15 @@
                             <!-- Email -->
                             <div class="md-form">
                                 <input type="email" name="email" 
-                                 v-bind:email="email" id ="materialLoginFormEmail"
-                                 v-on:keyup="writeEmail" class="form-control" placeholder="Mail">
+                                 v-model:email="email" id ="materialLoginFormEmail"
+                                 v-on:input="writeEmail" class="form-control" placeholder="Mail">
                             </div>
 
                             <!-- Password -->
                             <div class="md-form">
-                                <input type="password" 
-                                name="password" v-model="password" id="materialLoginFormPassword" class="form-control" placeholder="Mot de passe">
+                                <input type="password" name="password" 
+                                 v-model="password" id="materialLoginFormPassword" 
+                                 v-on:input="writePassword" class="form-control" placeholder="Mot de passe">
                             </div>
 
                             <div class="d-flex justify-content-around">
@@ -92,10 +93,10 @@
             },
 
             writeEmail(){
-                this.$emit('emailwrite', 'email' )
+                this.$emit('emailwrite', this.email )
             },
             writePassword(){
-
+                this.$emit('passwordwrite', this.password)
             },
 
         }

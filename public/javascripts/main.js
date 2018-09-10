@@ -71,6 +71,10 @@ const app = new Vue ({
         onWriteEmail (email){
             console.log('onWriteEmail', email)
             this.email = email
+        },
+        onWritePassword (password){
+            console.log('onWritePassword', password)
+            this.password = password
         }
     }
 
