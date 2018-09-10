@@ -17,16 +17,19 @@
                     <div class="card-body px-lg-5 pt-0">
 
                         <!-- Form -->
-                        <form class="text-center" style="color: #757575;">
+                        <form class="text-center"  style="color: #757575;">
 
                             <!-- Email -->
                             <div class="md-form">
-                                <input type="email" id ="materialLoginFormEmail" class="form-control" placeholder="Mail">
+                                <input type="email" name="email" 
+                                 v-bind:email="email" id ="materialLoginFormEmail"
+                                 v-on:keyup="writeEmail" class="form-control" placeholder="Mail">
                             </div>
 
                             <!-- Password -->
                             <div class="md-form">
-                                <input type="password" id="materialLoginFormPassword" class="form-control" placeholder="Mot de passe">
+                                <input type="password" 
+                                name="password" v-model="password" id="materialLoginFormPassword" class="form-control" placeholder="Mot de passe">
                             </div>
 
                             <div class="d-flex justify-content-around">
@@ -58,7 +61,7 @@
 
                             <!-- Sign in button -->
 
-                            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" >Se Connecter</button>
+                            <button id="butSignin" href="#"  v-on:submit="sendForAuth" class="btn btn-outline-info btn-rounded btn-block my-4 z-depth-0" >Se Connecter</button>
 
 
                         </form>
@@ -70,17 +73,31 @@
             </div>
 
         </section>
-
         `
 
 
     Vue.component('signin', {
-        props: ['currentpage'],
+        model : {
+            prop : 'value'
+        },
+        props: ['currentpage', 'email', 'password'],
         template: signinTemplate,
         methods: {
             changeCurrentPage (){
                 this.$emit('changepage', 'register')
-            }
+            },
+
+            sendForAuth () {
+                this.$emit('signin', 'butSignin')
+            },
+
+            writeEmail(){
+                this.$emit('emailwrite', 'email' )
+            },
+            writePassword(){
+
+            },
+
         }
     })
 

@@ -9,6 +9,8 @@ const app = new Vue ({
         genderList : [],
         name : '',
         categorielist : [],
+        email : '',
+        password : '',
         /*categorielist: [{
                 name: 'T-Shirt'
             }, {
@@ -54,11 +56,22 @@ const app = new Vue ({
                     })
                 })
         },
+
+
         onChangePage (page) {
             console.log('onChangePage', page)
             this.currentPage = page
-        }
+        },
 
+        onClickSignin (email, password) {
+            console.log('onClickSignin', email, password)
+            this.email = email
+            this.password = password
+        },
+        onWriteEmail (email){
+            console.log('onWriteEmail', email)
+            this.email = email
+        }
     }
 
 })

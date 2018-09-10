@@ -72,7 +72,8 @@
     </nav>
     <!-- Navbar -->
 
-    <signin v-if="currentPage === 'signin'" @changepage="onChangePage" :currentpage="currentPage">
+    <signin v-if="currentPage === 'signin'" @signin="onClickSignin" @emailwrite="onWriteEmail"
+            @changepage="onChangePage" :currentpage="currentPage" :email="email" :password="password">
 
     </signin>
 

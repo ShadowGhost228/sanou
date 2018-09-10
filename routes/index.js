@@ -52,6 +52,10 @@ router.post('/list', (req, res) => {
     res.send('OK')
 })
 
+router.post('/signin', (req, res) => {
+
+})
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
