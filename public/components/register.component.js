@@ -21,33 +21,29 @@
                             <div class="col">
                                 <!-- First name -->
                                 <div class="md-form">
-                                    <input type="text" id="materialRegisterFormFirstName" class="form-control" placeholder="Prenom">
+                                    <input type="text" 
+                                    class="form-control" placeholder="Nom Complet" v-model:prenom="prenom" name="prenom"  v-on:input="writePrenom">
                                 </div>
                             </div>
                             <div class="col">
-                                <!-- Last name -->
-                                <div class="md-form">
-                                    <input type="email" id="materialRegisterFormLastName" class="form-control" placeholder="nom">
-                                </div>
+                              
                             </div>
                         </div>
 
                         <!-- E-mail -->
                         <div class="md-form mt-0">
-                            <input type="email" id="materialRegisterFormEmail" class="form-control" placeholder="Mail">
+                            <input type="email" id="materialRegisterFormEmail" class="form-control" placeholder="Mail" v-model:mail="mail" v-on:input = "writeMail" name="mail">
                         </div>
 
                         <!-- Password -->
                         <div class="md-form">
-                            <input type="password" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" placeholder="Mot de passe">
+                            <input type="password" id="materialRegisterFormPassword" class="form-control" 
+                            aria-describedby="materialRegisterFormPasswordHelpBlock" 
+                             placeholder="Mot de passe" v-model:motDePasse="motDePasse" v-on:input="writeMotDePasse" name="writeMotDePasse">
                            
                         </div>
 
-                        <!-- Phone number -->
-                        <div class="md-form">
-                            <input type="password" id="materialRegisterFormPhone" class="form-control" aria-describedby="materialRegisterFormPhoneHelpBlock" placeholder="Numéro de Téléphone">
-                           
-                        </div>
+
 
                         <!-- Newsletter -->
                         <div class="form-check">
@@ -56,7 +52,7 @@
                         </div>
 
                         <!-- Sign up button -->
-                        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Se Connecter</button>
+                        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" v-on:click="sendForRegister()" id="buttonRegister" >Se Connecter</button>
 
                        
 
@@ -72,7 +68,28 @@
 
 
     Vue.component('register', {
-        template: signinTemplate
+        template: signinTemplate,
+        props: ['currentpage', 'prenom','mail', 'motDePasse'],
+        methods: {
+            changeCurrentPage (){
+               // this.$emit('changepage', 'register')
+            },
+            sendForRegister () {
+                this.$emit('register', 'buttonRegister')
+            },
+            writeMotDePasse(){
+                this.$emit('motDePasseWrite', this.motDePasse)
+            },
+            writeMail(){
+                this.$emit('mailWrite', this.mail)
+            },
+            writePrenom(){
+                this.$emit('prenomwrite', this.prenom)
+            }
+
+
+        }
+
     })
 
 })()

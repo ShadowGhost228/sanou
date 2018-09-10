@@ -24,17 +24,9 @@ const listCategorie = [{
             ]
 */
 const listUsers = [{
-    name : 'Erick',
-    email : 'erick@esiea.fr',
-    password : 'root'
-}, {
-    name : 'Richard',
-    email : 'richard@esiea.fr',
-    password : 'root'
-}, {
-    name : 'Ivanick',
-    email : 'ivanick@esiea.fr',
-    password : 'root'
+    prenom : ' ',
+    mail : ' ',
+    motDePasse : ' '
 }]
 
 router.get('/listCategorie', (req, res) => {
@@ -44,10 +36,15 @@ router.get('/listCategorie', (req, res) => {
 router.get('/listGender', (req, res) => {
     res.json(listGender)
 })
+router.get('/listUsers', (req, res) => {
+    res.json(listUsers)
+})
 
-router.post('/list', (req, res) => {
-    list.push({
-        name: req.body.name
+router.post('/listUsers', (req, res) => {
+    listUsers.push({
+        prenom: req.body.prenom,
+        mail: req.body.mail,
+        motDePasse: req.body.motDePasse
     })
     res.send('OK')
 })

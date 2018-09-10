@@ -10,7 +10,9 @@ const app = new Vue ({
         name : '',
         categorielist : [],
         email : '',
-        password : '',
+        motDePasse: '',
+        mail : '',
+        prenom : ''
         /*categorielist: [{
                 name: 'T-Shirt'
             }, {
@@ -75,6 +77,35 @@ const app = new Vue ({
         onWritePassword (password){
             console.log('onWritePassword', password)
             this.password = password
+        },
+        onWriteMotDePasse(motDePasse){
+            console.log('onWriteMotDePasse', motDePasse)
+            this.motDePasse = motDePasse
+        },
+        onWriteMail(mail){
+            console.log('onWriteMail', mail)
+            this.mail = mail
+        },
+
+        onWritePrenom(prenom){
+            console.log('onWritePrenom', prenom)
+            this.prenom = prenom
+        },
+
+
+        addUsers: function () {
+            this.$http.post('/listUsers', {
+                prenom: this.prenom,
+                motDePasse: this.motDePasse,
+                mail: this.mail
+            })
+                .then(() => {
+                    this.myList.push({
+                        prenom: this.prenom,
+                        mail: this.mail,
+                        motDePasse: this.motDePasse
+                    })
+                })
         }
     }
 
