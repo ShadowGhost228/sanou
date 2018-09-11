@@ -26,7 +26,7 @@ const listCategorie = [{
 const listUsers = [{
     prenom : ' ',
     mail : ' ',
-    motDePasse : ' '
+    mdp : ' '
 }]
 
 router.get('/listCategorie', (req, res) => {
@@ -44,7 +44,7 @@ router.post('/listUsers', (req, res) => {
     listUsers.push({
         prenom: req.body.prenom,
         mail: req.body.mail,
-        motDePasse: req.body.motDePasse
+        mdp: req.body.mdp
     })
     res.send('OK')
 })

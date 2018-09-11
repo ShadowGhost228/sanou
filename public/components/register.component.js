@@ -32,24 +32,19 @@
 
                         <!-- E-mail -->
                         <div class="md-form mt-0">
-                            <input type="email" id="materialRegisterFormEmail" class="form-control" placeholder="Mail" v-model:mail="mail" v-on:input = "writeMail" name="mail">
+                            <input type="email" id="materialRegisterFormEmail" class="form-control" placeholder="Mail" v-model:mail="mail" v-on:input="writeMail" name="mail">
                         </div>
 
                         <!-- Password -->
                         <div class="md-form">
                             <input type="password" id="materialRegisterFormPassword" class="form-control" 
                             aria-describedby="materialRegisterFormPasswordHelpBlock" 
-                             placeholder="Mot de passe" v-model:motDePasse="motDePasse" v-on:input="writeMotDePasse" name="writeMotDePasse">
+                             placeholder="Mot de passe" v-model:mdp="mdp" v-on:input="writePassword" name="mdp">
                            
                         </div>
 
 
 
-                        <!-- Newsletter -->
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="materialRegisterFormNewsletter">
-                            <label class="form-check-label" for="materialRegisterFormNewsletter">Subscribe to our newsletter</label>
-                        </div>
 
                         <!-- Sign up button -->
                         <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" v-on:click="sendForRegister()" id="buttonRegister" >Se Connecter</button>
@@ -69,7 +64,7 @@
 
     Vue.component('register', {
         template: signinTemplate,
-        props: ['currentpage', 'prenom','mail', 'motDePasse'],
+        props: ['currentpage' , 'prenom' , 'mail' , 'mdp'],
         methods: {
             changeCurrentPage (){
                // this.$emit('changepage', 'register')
@@ -77,11 +72,11 @@
             sendForRegister () {
                 this.$emit('register', 'buttonRegister')
             },
-            writeMotDePasse(){
-                this.$emit('motDePasseWrite', this.motDePasse)
+            writePassword(){
+                this.$emit('passwordwrite', this.mdp)
             },
             writeMail(){
-                this.$emit('mailWrite', this.mail)
+                this.$emit('mailwrite', this.mail)
             },
             writePrenom(){
                 this.$emit('prenomwrite', this.prenom)

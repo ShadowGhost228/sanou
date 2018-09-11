@@ -84,7 +84,7 @@
 
     </signin>
 
-    <register v-else-if="currentPage === 'register'" @register="addUsers" @motDePasseWrite="onWriteMotDePasse" @mailWrite="onWriteMail" @prenomwrite="onWritePrenom" :mail="mail" :motDePasse="motDePasse" :prenom="prenom"  :currentpage="currentPage">
+    <register v-else-if="currentPage === 'register'" @register="addUsers" @passwordwrite="onWriteMotDePasse" @mailwrite="onWriteMail" @prenomwrite="onWritePrenom" :mail="mail" :mdp="mdp" :prenom="prenom"  :currentpage="currentPage">
 
     </register>
 

@@ -10,7 +10,7 @@ const app = new Vue ({
         name : '',
         categorielist : [],
         email : '',
-        motDePasse: '',
+        mdp: '',
         mail : '',
         prenom : ''
         /*categorielist: [{
@@ -78,9 +78,9 @@ const app = new Vue ({
             console.log('onWritePassword', password)
             this.password = password
         },
-        onWriteMotDePasse(motDePasse){
-            console.log('onWriteMotDePasse', motDePasse)
-            this.motDePasse = motDePasse
+        onWriteMotDePasse(mdp){
+            console.log('onWriteMotDePasse',mdp)
+            this.mdp = mdp
         },
         onWriteMail(mail){
             console.log('onWriteMail', mail)
@@ -96,14 +96,14 @@ const app = new Vue ({
         addUsers: function () {
             this.$http.post('/listUsers', {
                 prenom: this.prenom,
-                motDePasse: this.motDePasse,
+                mdp: this.mdp,
                 mail: this.mail
             })
                 .then(() => {
                     this.myList.push({
                         prenom: this.prenom,
                         mail: this.mail,
-                        motDePasse: this.motDePasse
+                        mdp: this.mdp
                     })
                 })
         }
