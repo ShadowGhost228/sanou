@@ -29,40 +29,15 @@
                             <!-- Password -->
                             <div class="md-form">
                                 <input type="password" name="password" 
-                                 v-model="password" id="materialLoginFormPassword" 
+                                 v-model:password="password" id="materialLoginFormPassword" 
                                  v-on:input="writePassword" class="form-control" placeholder="Mot de passe">
-                            </div>
-
-                            <div class="d-flex justify-content-around">
-                                <div>
-                                    <!-- Remember me -->
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="materialLoginFormRemember" >
-                                        <label class="form-check-label" for="materialLoginFormRemember">Se Rappeler de moi</label>
-                                    </div>
-                                </div>
-                                <div>
-                                    <!-- Forgot password -->
-                                    <a href="">Mot de passe oublié ?</a>
-                                </div>
-                                <div>
-                                    
-                                    <!--<a @click="changeCurrentPage">register</a>-->                                                         
-                                    
-                                    <!--<register v-if="currentpage === 'register'">
-                                        
-                                    </register>-->
-                                    
-                                    <!--<p v-if="currentpage === 'register'">
-                                        Affiche toi
-                                    </p>-->
-                                    
-                                </div>
                             </div>
 
                             <!-- Sign in button -->
 
-                            <button id="butSignin" href="#"  v-on:submit="sendForAuth" class="btn btn-outline-info btn-rounded btn-block my-4 z-depth-0" >Se Connecter</button>
+                            <a @click="sendForAuth" class="btn btn-outline-info btn-rounded btn-block my-4 z-depth-0">
+                                Se Connecter
+                            </a>
 
 
                         </form>
@@ -78,23 +53,22 @@
 
 
     Vue.component('signin', {
-        model : {
-            prop : 'value'
-        },
         props: ['currentpage', 'email', 'password'],
         template: signinTemplate,
         methods: {
+
             changeCurrentPage (){
                 this.$emit('changepage', 'register')
             },
 
             sendForAuth () {
-                this.$emit('signin', 'butSignin')
+                this.$emit('login', 'magasin')
             },
 
             writeEmail(){
                 this.$emit('emailwrite', this.email )
             },
+
             writePassword(){
                 this.$emit('passwordwrite', this.password)
             },

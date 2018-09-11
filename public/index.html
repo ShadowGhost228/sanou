@@ -74,7 +74,7 @@
     </nav>
     <!-- Navbar -->
 
-    <signin v-if="currentPage === 'signin'" @signin="onClickSignin"
+    <signin v-if="currentPage === 'signin'" @login="onClickButtonSignin"
             @emailwrite="onWriteEmail"
             @passwordwrite="onWritePassword"
             @changepage="onChangePage"
@@ -100,6 +100,10 @@
             <products>
 
             </products>
+
+            <ul>
+                <li v-for="item in authlist">{{ item.email }}</li>
+            </ul>
 
             <!--Pagination-->
             <nav class="d-flex justify-content-center wow fadeIn">

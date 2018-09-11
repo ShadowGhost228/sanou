@@ -19,10 +19,9 @@ const listCategorie = [{
 }, {
     name: 'Costumes'
 }]
-/*const lists = [ [{name: 'Homme'}, {name: 'Femme'}],
-                [{name: 'T-Shirt'}, {name: 'Jeans'}, {name: 'Chaussures'}, {name: 'Pull'}, {name: 'Costumes'}]
-            ]
-*/
+
+const listAuth = []
+
 const listUsers = [{
     prenom : ' ',
     mail : ' ',
@@ -49,17 +48,24 @@ router.post('/listUsers', (req, res) => {
     res.send('OK')
 })
 
-router.post('/signin', (req, res) => {
-
+router.post('/login', (req, res) => {
+    const email = req.body.email
+    const password = req.body.password
+    if (email === 'louis' || password === 'secret') {
+        listAuth.push ({
+            email : email,
+            password : password,
+        })
+        res.redirect('/')
+    } else {
+        res.status(400).send('Bouuuh mauvais mdp')
+    }
+    console.log(listAuth.length)
 })
 
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-
+router.get('/listAuth', (req, res) => {
+    res.json(listAuth)
+})
 
 
 module.exports = router;
