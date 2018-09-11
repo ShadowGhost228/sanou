@@ -11,19 +11,12 @@ const app = new Vue({
         email : '',
         password : '',
         authlist : [],
-        isconnect : '',
-        /*categorielist: [{
-                name: 'T-Shirt'
-            }, {
-                name: 'Jeans'
-            }, {
-                name: 'Chaussures'
-            }, {
-                name: 'Pull'
-            }, {
-                name: 'Costumes'
-        }],*/
-        //lMerge : [[{item : "Erick", item: "Richard"}], [{item : "Erick", item: "Richard"}]]
+        isconnect : false,
+        mdp : '',
+        prenom : '',
+        mail : '',
+        currentuser: '',
+
     },
 
     created() {
@@ -47,17 +40,6 @@ const app = new Vue({
                 console.log('error', err)
             })
 
-        /*
-        this.$http.get('/listAuth')
-            .then(listAuth => {
-                console.log('affichage de ma liste', listAuth)
-                this.authList = listAuth.data
-            })
-            .catch(err => {
-                console.log('error', err)
-            })
-        */
-
     },
     methods: {
         sendNewElement() {
@@ -79,7 +61,6 @@ const app = new Vue({
                 email: this.email,
                 password: this.password
             })
-
                 .then(() => {
                     this.currentPage = page
 
@@ -88,6 +69,13 @@ const app = new Vue({
                         password: this.password
                     })
                     console.log('taille de authlist', this.authlist)
+                    this.isconnect = true
+
+                    this.$http.get('/user')
+                        .then(user => {
+                            console.log('affichage de user', user)
+                            this.currentuser = user.data
+                        })
 
                 })
                 .catch(err => {
@@ -97,7 +85,6 @@ const app = new Vue({
                 })
 
         },
-
         onChangePage(page) {
             console.log('onChangePage', page)
             this.currentPage = page
@@ -118,12 +105,10 @@ const app = new Vue({
             console.log('onWriteMail', mail)
             this.mail = mail
         },
-
         onWritePrenom(prenom){
             console.log('onWritePrenom', prenom)
             this.prenom = prenom
         },
-
 
         addUsers: function () {
             this.$http.post('/listUsers', {
@@ -138,6 +123,14 @@ const app = new Vue({
                         mdp: this.mdp
                     })
                 })
+        },
+
+        deconnexion() {
+            currentuser: ''
+            email : ''
+            isconnect : false
+            currentPage : 'magasin'
+            window.location.reload()
         }
     }
 

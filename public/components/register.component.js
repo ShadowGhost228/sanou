@@ -1,8 +1,7 @@
-
 ;(function () {
     'use strict'
 
-    const signinTemplate =  ` 
+    const signinTemplate = ` 
         <section id="register">
             <!-- Material form register -->
             <div class="card offset-6 col-md-4 py-5 px-5 z-depth-4">
@@ -17,22 +16,16 @@
                     <!-- Form -->
                     <form class="text-center" style="color: #757575;">
 
-                        <div class="form-row">
-                            <div class="col">
-                                <!-- First name -->
-                                <div class="md-form">
-                                    <input type="text" 
-                                    class="form-control" placeholder="Nom Complet" v-model:prenom="prenom" name="prenom"  v-on:input="writePrenom">
-                                </div>
-                            </div>
-                            <div class="col">
-                              
-                            </div>
+                        <div class="md-form">
+                            <input type="text" 
+                            class="form-control" placeholder="Nom Complet" 
+                            v-model:prenom="prenom" name="prenom"  v-on:input="writePrenom">
                         </div>
-
+                    
                         <!-- E-mail -->
                         <div class="md-form mt-0">
-                            <input type="email" id="materialRegisterFormEmail" class="form-control" placeholder="Mail" v-model:mail="mail" v-on:input="writeMail" name="mail">
+                            <input type="email" id="materialRegisterFormEmail"
+                             class="form-control" placeholder="Mail" v-model:mail="mail" v-on:input="writeMail" name="mail">
                         </div>
 
                         <!-- Password -->
@@ -64,21 +57,21 @@
 
     Vue.component('register', {
         template: signinTemplate,
-        props: ['currentpage' , 'prenom' , 'mail' , 'mdp'],
+        props: ['currentpage', 'prenom', 'mail', 'mdp'],
         methods: {
-            changeCurrentPage (){
-               // this.$emit('changepage', 'register')
+            changeCurrentPage() {
+                // this.$emit('changepage', 'register')
             },
-            sendForRegister () {
+            sendForRegister() {
                 this.$emit('register', 'buttonRegister')
             },
-            writePassword(){
+            writePassword() {
                 this.$emit('passwordwrite', this.mdp)
             },
-            writeMail(){
+            writeMail() {
                 this.$emit('mailwrite', this.mail)
             },
-            writePrenom(){
+            writePrenom() {
                 this.$emit('prenomwrite', this.prenom)
             }
 

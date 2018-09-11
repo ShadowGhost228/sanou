@@ -23,9 +23,9 @@ const listCategorie = [{
 const listAuth = []
 
 const listUsers = [{
-    prenom : ' ',
-    mail : ' ',
-    mdp : ' '
+    prenom : 'root',
+    mail : 'root@gmail.com',
+    mdp : 'root'
 }]
 
 router.get('/listCategorie', (req, res) => {
@@ -45,17 +45,23 @@ router.post('/listUsers', (req, res) => {
         mail: req.body.mail,
         mdp: req.body.mdp
     })
-    res.send('OK')
+    res.redirect('/login')
 })
 
 router.post('/login', (req, res) => {
     const email = req.body.email
     const password = req.body.password
-    if (email === 'louis' || password === 'secret') {
+
+    var user = research(email,password)
+    console.log('Utilisateur', user)
+
+    if (user != '') {
         listAuth.push ({
             email : email,
             password : password,
         })
+        console.log('Utilisateur', user)
+        router.get('/user', (req, res) => { res.send(user) })
         res.redirect('/')
     } else {
         res.status(400).send('Bouuuh mauvais mdp')
@@ -67,5 +73,16 @@ router.get('/listAuth', (req, res) => {
     res.json(listAuth)
 })
 
+
+
+function research(email, password){
+    var user = ''
+    for (i = 0; i<listUsers.length; i++){
+        if( email === listUsers[i].mail && password === listUsers[i].mdp){
+            user = listUsers[i]
+        }
+    }
+    return user
+}
 
 module.exports = router;
