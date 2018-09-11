@@ -10,6 +10,8 @@ const app = new Vue({
         categorielist : [],
         email : '',
         password : '',
+        authlist : [],
+        isconnect : '',
         /*categorielist: [{
                 name: 'T-Shirt'
             }, {
@@ -91,6 +93,7 @@ const app = new Vue({
                 .catch(err => {
                     console.log('error', err)
                     alert('Mauvais mot de passe ou email')
+                    this.isconnect = false
                 })
 
         },
