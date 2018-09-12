@@ -1,7 +1,7 @@
 ;(function () {
     'use strict'
 
-    const signinTemplate = ` 
+    const template = ` 
         <section id="register">
             <!-- Material form register -->
             <div class="card offset-6 col-md-4 py-5 px-5 z-depth-4">
@@ -55,7 +55,7 @@
 
 
     Vue.component('register', {
-        template: signinTemplate,
+        template: template,
         props: ['currentpage', 'prenom', 'mail', 'mdp'],
         methods: {
             changeCurrentPage() {

@@ -17,6 +17,8 @@ const app = new Vue({
         mail : '',
         currentuser: '',
         userlist : [],
+        panier : [],
+        productsList : [],
 
     },
 
@@ -42,6 +44,7 @@ const app = new Vue({
             })
 
     },
+
     methods: {
         sendNewElement() {
             this.$http.post('/list', {
@@ -53,7 +56,6 @@ const app = new Vue({
                     })
                 })
         },
-
 
         onClickButtonSignin(page) {
             console.log('onClisckButtonSignin', page)
@@ -73,7 +75,6 @@ const app = new Vue({
                     this.isconnect = true
                     this.$http.get('/user')
                         .then(user => {
-
                             console.log('affichage de user', user)
                             this.currentuser = user.data
                         })
@@ -86,26 +87,32 @@ const app = new Vue({
                 })
 
         },
+
         onChangePage(page) {
             console.log('onChangePage', page)
             this.currentPage = page
         },
+
         onWriteEmail(email) {
             console.log('onWriteEmail', email)
             this.email = email
         },
+
         onWritePassword(password) {
             console.log('onWritePassword', password)
             this.password = password
         },
+
         onWriteMotDePasse(mdp){
             console.log('onWriteMotDePasse',mdp)
             this.mdp = mdp
         },
+
         onWriteMail(mail){
             console.log('onWriteMail', mail)
             this.mail = mail
         },
+
         onWritePrenom(prenom){
             console.log('onWritePrenom', prenom)
             this.prenom = prenom

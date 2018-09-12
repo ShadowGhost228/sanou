@@ -15,39 +15,20 @@
                             <!--Card-->
                             <div class="card">
 
-                                <!--Card image-->
-                                <div class="view overlay">
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top" alt="">
-                                    <a>
-                                        <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                </div>
-                                <!--Card image-->
+                                <view-overlay>
+                                
+                                </view-overlay>
 
                                 <!--Card content-->
-                                <div class="card-body text-center">
-                                    <!--Category & Title-->
-                                    <a href="" class="grey-text">
-                                        <h5>Shirt</h5>
-                                    </a>
-                                    <h5>
-                                        <strong>
-                                            <a href="" class="dark-grey-text">Denim shirt
-                                                <span class="badge badge-pill danger-color">NEW</span>
-                                            </a>
-                                        </strong>
-                                    </h5>
-
-                                    <h4 class="font-weight-bold blue-text">
-                                        <strong>120$</strong>
-                                    </h4>
-                                    
+                                <card-body>
+                                
+                                </card-body>
+                                
+                                <div class="card-footer text-center">
                                     <a href="#">
                                         Ajouter au panier <i class="fa fa-shopping-cart"></i>
                                     </a>
-
                                 </div>
-                                <!--Card content-->
 
                             </div>
                             <!--Card-->

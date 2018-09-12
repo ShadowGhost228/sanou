@@ -106,6 +106,8 @@ const listProducts = [
     },
 ]
 
+const panier = []
+
 router.get('/listCategorie', (req, res) => {
     res.json(listCategorie)
 })
@@ -164,6 +166,15 @@ router.get('/listAuth', (req, res) => {
     res.json(listAuth)
 })
 
+router.get('/products', (req, res) => {
+    res.json(listProducts)
+})
+
+router.post('/panier', (req, res) => {})
+
+router.get('/panier', (req, res) => {
+    res.json(panier)
+})
 
 
 function research(email, password){
