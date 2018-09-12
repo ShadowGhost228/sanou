@@ -40,11 +40,21 @@ router.get('/listUsers', (req, res) => {
 })
 
 router.post('/listUsers', (req, res) => {
-    listUsers.push({
-        prenom: req.body.prenom,
-        mail: req.body.mail,
-        mdp: req.body.mdp
-    })
+
+
+    if (researchUserForRegister(mail) != true) {
+        listUsers.push({
+            prenom: req.body.prenom,
+            mail: req.body.mail,
+            mdp: req.body.mdp
+        })
+    }
+    else{
+
+        res.status(400).send('Mail déjà utilisé')
+
+    }
+
     res.redirect('/login')
 })
 
@@ -83,6 +93,16 @@ function research(email, password){
         }
     }
     return user
+}
+
+function researchUserForRegister(email){
+
+    for (i = 0; i<listUsers.length; i++){
+        if( email === listUsers[i].mai){
+           return true
+        }
+    }
+    return false
 }
 
 module.exports = router;

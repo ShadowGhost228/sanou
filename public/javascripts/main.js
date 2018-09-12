@@ -70,9 +70,9 @@ const app = new Vue({
                     })
                     console.log('taille de authlist', this.authlist)
                     this.isconnect = true
-
                     this.$http.get('/user')
                         .then(user => {
+
                             console.log('affichage de user', user)
                             this.currentuser = user.data
                         })
@@ -122,12 +122,16 @@ const app = new Vue({
                         mail: this.mail,
                         mdp: this.mdp
                     })
-                })
+                }).catch(
+                    alert("Adresse mail déjà utilisé")
+
+            )
         },
 
         deconnexion() {
             currentuser: ''
             email : ''
+            password : ''
             isconnect : false
             currentPage : 'magasin'
             window.location.reload()
