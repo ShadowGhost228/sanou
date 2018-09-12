@@ -16,6 +16,7 @@ const app = new Vue({
         prenom : '',
         mail : '',
         currentuser: '',
+        userlist : [],
 
     },
 
@@ -110,22 +111,28 @@ const app = new Vue({
             this.prenom = prenom
         },
 
-        addUsers: function () {
-            this.$http.post('/listUsers', {
+        addUsers (page) {
+            console.log('onClisckButtonRegister', page)
+
+            this.$http.post('/register', {
                 prenom: this.prenom,
                 mdp: this.mdp,
                 mail: this.mail
             })
                 .then(() => {
-                    this.myList.push({
+                    this.currentPage = page
+
+                    this.userlist.push({
                         prenom: this.prenom,
                         mail: this.mail,
                         mdp: this.mdp
                     })
-                }).catch(
+                })
+                .catch(err => {
+                    console.log('error', err)
                     alert("Adresse mail déjà utilisé")
-
-            )
+                    this.isconnect = false
+                })
         },
 
         deconnexion() {

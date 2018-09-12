@@ -37,10 +37,9 @@
                         </div>
 
 
-
-
                         <!-- Sign up button -->
-                        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" v-on:click="sendForRegister()" id="buttonRegister" >Se Connecter</button>
+                        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
+                         v-on:click="sendForRegister()" id="buttonRegister" >Se Connecter</button>
 
                        
 
@@ -63,7 +62,7 @@
                 // this.$emit('changepage', 'register')
             },
             sendForRegister() {
-                this.$emit('register', 'buttonRegister')
+                this.$emit('register', 'magasin')
             },
             writePassword() {
                 this.$emit('passwordwrite', this.mdp)

@@ -28,6 +28,17 @@ const listUsers = [{
     mdp : 'root'
 }]
 
+const listProducts = [
+    {
+        url : '',
+        title : '',
+        category : '',
+        gender : '',
+        price : '',
+        number : '',
+    }
+]
+
 router.get('/listCategorie', (req, res) => {
     res.json(listCategorie)
 })
@@ -39,23 +50,25 @@ router.get('/listUsers', (req, res) => {
     res.json(listUsers)
 })
 
-router.post('/listUsers', (req, res) => {
+router.post('/register', (req, res) => {
+    const prenom = req.body.prenom
+    const mail = req.body.mail
+    const mdp = req.body.mdp
 
+    var user = researchUserForRegister(mail)
+    console.log('Valeur de user', user)
 
-    if (researchUserForRegister(mail) != true) {
+    if (user == '' ) {
         listUsers.push({
-            prenom: req.body.prenom,
-            mail: req.body.mail,
-            mdp: req.body.mdp
+            prenom: prenom,
+            mail: mail,
+            mdp: mdp
         })
-    }
-    else{
-
+        //res.redirect('/login')
+    } else{
         res.status(400).send('Mail déjà utilisé')
-
     }
 
-    res.redirect('/login')
 })
 
 router.post('/login', (req, res) => {
@@ -74,6 +87,7 @@ router.post('/login', (req, res) => {
         router.get('/user', (req, res) => { res.send(user) })
         res.redirect('/')
     } else {
+        user = ''
         res.status(400).send('Bouuuh mauvais mdp')
     }
     console.log(listAuth.length)
@@ -97,12 +111,13 @@ function research(email, password){
 
 function researchUserForRegister(email){
 
+    var user = ''
     for (i = 0; i<listUsers.length; i++){
-        if( email === listUsers[i].mai){
-           return true
+        if( email === listUsers[i].mail){
+           user = listUsers[i]
         }
     }
-    return false
+    return user
 }
 
 module.exports = router;

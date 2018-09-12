@@ -41,6 +41,10 @@
                                     <h4 class="font-weight-bold blue-text">
                                         <strong>120$</strong>
                                     </h4>
+                                    
+                                    <a href="#">
+                                        Ajouter au panier <i class="fa fa-shopping-cart"></i>
+                                    </a>
 
                                 </div>
                                 <!--Card content-->
