@@ -214,12 +214,12 @@
                 <td> {{ item.title }} </td>
                 <td> {{ item.category }} </td>
                 <td> {{ item.price }} </td>
-                <td><a class="nav-link waves-effect"><i class="fa fa-pencil"></i></a></td>
-                <td><a class="nav-link waves-effect"><i class="fa fa-remove"></i></a></td>
+                <td><a class="waves-effect"><i class="fa fa-pencil"></i></a></td>
+                <td><a class="waves-effect"><i class="fa fa-remove"></i></a></td>
             </tr>
             <tr>
-                <td colspan="3"> Total </td>
-                <td colspan="3"> </td>
+                <td class="text-center" colspan="3"> Total </td>
+                <td class="text-center" colspan="3"> {{ cartPrice() }} </td>
             </tr>
             </tbody>
             <!--Table body-->

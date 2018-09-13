@@ -193,6 +193,14 @@ const app = new Vue({
                 alert("Connectez vous ou creer votre compte")
             }
 
+        },
+
+        cartPrice(){
+            var somme = 0
+            for (i=0; i<this.cart.length; i++){
+                somme += this.cart[i].price
+            }
+            return somme
         }
     }
 
