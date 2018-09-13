@@ -17,7 +17,7 @@ const app = new Vue({
         mail : '',
         currentuser: '',
         userlist : [],
-        panier : [],
+        cart : [],
         productsList : [],
 
     },
@@ -38,6 +38,15 @@ const app = new Vue({
             .then(listGender => {
                 console.log('affichage de ma liste', listGender)
                 this.genderList = listGender.data
+            })
+            .catch(err => {
+                console.log('error', err)
+            })
+
+        this.$http.get('/products')
+            .then(listProducts => {
+                console.log('affichage de ma liste', listProducts)
+                this.productsList = listProducts.data
             })
             .catch(err => {
                 console.log('error', err)
@@ -119,7 +128,7 @@ const app = new Vue({
         },
 
         addUsers (page) {
-            console.log('onClisckButtonRegister', page)
+            console.log('onClickButtonRegister', page)
 
             this.$http.post('/register', {
                 prenom: this.prenom,
@@ -149,6 +158,41 @@ const app = new Vue({
             isconnect : false
             currentPage : 'magasin'
             window.location.reload()
+        },
+
+        addToCart(item){
+            if(this.isconnect == true ){
+                console.log('Produit sélectionné', item)
+                this.$http.post('/cart', {
+                    item
+                })
+                    .then(() => {
+                        this.$http.get('/products')
+                            .then(listProducts => {
+                                console.log('affichage de ma liste', listProducts)
+                                this.productsList = listProducts.data
+                            })
+                            .catch(err => {
+                                console.log('error', err)
+                            })
+                        this.$http.get('/cart')
+                            .then(cart => {
+                                console.log('affichage du panier', cart)
+                                this.cart = cart.data
+                            })
+                            .catch(err => {
+                                console.log('error', err)
+                            })
+                    })
+                    .catch(err => {
+                        console.log('error', err)
+                        alert("Le stock est fini")
+                    })
+            }
+            else {
+                alert("Connectez vous ou creer votre compte")
+            }
+
         }
     }
 

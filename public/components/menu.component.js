@@ -48,7 +48,4 @@
         props : ["categorielist"],
         template: menuTemplate
     })
-
-
-
 })()

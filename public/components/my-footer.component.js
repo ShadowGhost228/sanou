@@ -27,7 +27,7 @@
         `
 
 
-    Vue.component('footer', {
+    Vue.component('my-footer', {
         template: template
     })
 })()

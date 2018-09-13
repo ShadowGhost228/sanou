@@ -52,13 +52,13 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link waves-effect">
-                            <span class="badge red mr-1"> 2 </span>
+                            <span class="badge red mr-1">{{cart.length}}</span>
                             <i class="fa fa-shopping-cart"></i>
-                            <span class="clearfix d-sm-inline-block"> Panier </span>
+                            <span @click="currentPage = 'cart'" class="clearfix d-sm-inline-block"> Panier </span>
                         </a>
                     </li>
 
-                    <li v-if="isconnect === false"  class="nav-item">
+                    <li v-if="isconnect === false" class="nav-item">
                         <a @click="currentPage = 'signin'" class="nav-link waves-effect">
                             <i class="fa fa-user"></i>
                         </a>
@@ -91,16 +91,15 @@
             @changepage="onChangePage"
             :currentpage="currentPage"
             :email="email"
-            :password="password" >
+            :password="password">
 
     </signin>
 
     <register v-else-if="currentPage === 'register'" @register="addUsers"
               @passwordwrite="onWriteMotDePasse" @mailwrite="onWriteMail"
-              @prenomwrite="onWritePrenom" :mail="mail" :mdp="mdp" :prenom="prenom"  :currentpage="currentPage">
+              @prenomwrite="onWritePrenom" :mail="mail" :mdp="mdp" :prenom="prenom" :currentpage="currentPage">
 
     </register>
-
 
     <!--Main layout-->
     <section v-else-if="currentPage === 'magasin'" id="magasin">
@@ -110,13 +109,43 @@
 
             </menu-categorie>
 
-            <products>
+            <section id="products" class="text-center mb-4">
 
-            </products>
+                <!--Grid row-->
+                <div class="row wow fadeIn">
 
-            <ul>
-                <li v-for="item in authlist">{{ item.email }}</li>
-            </ul>
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4" v-for="item in productsList">
+
+                        <!--Card-->
+                        <div class="card">
+
+                            <view-overlay :product="item">
+
+                            </view-overlay>
+
+                            <!--Card content-->
+                            <card-body :product="item">
+
+                            </card-body>
+
+                            <div class="card-footer text-center">
+                                <a @click="addToCart(item)">
+                                    Ajouter au panier <i class="fa fa-shopping-cart"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                        <!--Card-->
+
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+
+            </section>
 
             <!--Pagination-->
             <nav class="d-flex justify-content-center wow fadeIn">
@@ -162,28 +191,49 @@
     </section>
     <!--Main layout-->
 
-    <!-- Footer -->
-    <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+    <section v-else-if="currentPage === 'cart'" id="cart">
 
-        <hr class="my-4">
+        <!--Table-->
+        <table id="tablePreview" class="table offset-1 col-md-10" >
+            <!--Table head-->
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Catégorie</th>
+                <th>Prix</th>
+                <th>Modifier</th>
+                <th>Suppimer</th>
+            </tr>
+            </thead>
+            <!--Table head-->
+            <!--Table body-->
+            <tbody>
+            <tr v-for="item in cart">
+                <th scope="row">{{ item.id }}</th>
+                <td> {{ item.title }} </td>
+                <td> {{ item.category }} </td>
+                <td> {{ item.price }} </td>
+                <td><a class="nav-link waves-effect"><i class="fa fa-pencil"></i></a></td>
+                <td><a class="nav-link waves-effect"><i class="fa fa-remove"></i></a></td>
+            </tr>
+            <tr>
+                <td colspan="3"> Total </td>
+                <td colspan="3"> </td>
+            </tr>
+            </tbody>
+            <!--Table body-->
+        </table>
+        <!--Table-->
 
-        <!-- Social icons -->
-        <div class="pb-4">
-            <a href="#">
-                <i class="fa fa-facebook mr-3"></i>
-            </a>
 
-            <a href="#">
-                <i class="fa fa-github mr-3"></i>
-            </a>
-        </div>
-        <div class="footer-copyright py-3">
-            © 2018 Copyright:
-            <a href="#"> ESIEA 2018 </a>
-        </div>
 
-    </footer>
-    <!-- Footer -->
+    </section>
+
+    <my-footer>
+
+    </my-footer>
+
 
 </main>
 
@@ -200,8 +250,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>
 <!-- Menu components.js -->
 <script src="components/menu.component.js"></script>
-<!-- products compoments.js -->
-<script src="components/products.component.js"></script>
 <!-- signin compoments.js -->
 <script src="components/signin.component.js"></script>
 <!-- register compoments.js -->
@@ -210,6 +258,8 @@
 <script src="components/view-overlay.component.js"></script>
 <!--  view card components-->
 <script src="components/card-body.component.js"></script>
+<!--  footer components-->
+<script src="components/my-footer.component.js"></script>
 <!-- Main js -->
 <script src="javascripts/main.js"></script>
 </body>
