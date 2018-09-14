@@ -112,7 +112,7 @@ const listProducts = [
     },
 ]
 
-const cart = []
+cart = []
 
 router.get('/listCategorie', (req, res) => {
     res.json(listCategorie)
@@ -132,15 +132,13 @@ router.post('/register', (req, res) => {
     const mdp = req.body.mdp
 
     var user = researchUserForRegister(mail)
-    console.log('Valeur de user', user)
 
-    if (user == '' ) {
+    if (user === '' ) {
         listUsers.push({
             prenom: prenom,
             mail: mail,
             mdp: mdp
         })
-        //res.redirect('/login')
     } else{
         res.status(400).send('Mail déjà utilisé')
     }
@@ -181,7 +179,7 @@ router.post('/cart', (req, res) => {
     const product = req.body.item
 
     console.log('Produit envoyé', product)
-    var value = listProducts[researchProduct(product)]
+    var value = listProducts[researchProduct(product, listProducts)]
     console.log('Value.number', value.number)
 
     if(value.number > 0) {
@@ -189,13 +187,6 @@ router.post('/cart', (req, res) => {
         value.number -= 1
         cart.push(value)
         console.log('Cart', cart)
-        router.get('/products', (req, res) => {
-            res.json(listProducts)
-        })
-
-        router.get('/cart', (req, res) => {
-            res.json(cart)
-        })
         res.redirect('/')
 
     } else {
@@ -206,6 +197,31 @@ router.post('/cart', (req, res) => {
 
 router.get('/cart', (req, res) => {
     res.json(cart)
+})
+
+router.delete('/deletecart', (req, res) => {
+    cart = []
+})
+
+router.post('/updatecart', (req, res) => {
+    product = req.body.item
+
+    console.log('Produit récupéré', product)
+
+    var value = cart[researchProduct(product, cart)]
+
+    console.log('value', value)
+
+    if(value){
+        cart.splice(value-1, 1)
+
+        product = listProducts[researchProduct(product, listProducts)]
+        product.number += 1
+
+    } else {
+        res.status(400).send('Pas element')
+    }
+
 })
 
 function research(email, password){
@@ -229,12 +245,12 @@ function researchUserForRegister(email){
     return user
 }
 
-function researchProduct(product){
+function researchProduct(product, tableau){
 
     var index = ''
-    for (i = 0; i<listProducts.length; i++){
-        if( product.id === listProducts[i].id){
-            index = listProducts.indexOf(listProducts[i])
+    for (i = 0; i<tableau.length; i++){
+        if( product.id === tableau[i].id){
+            index = tableau.indexOf(tableau[i])
         }
     }
     console.log('index renvoyé', index)

@@ -137,7 +137,6 @@ const app = new Vue({
             })
                 .then(() => {
                     this.currentPage = page
-
                     this.userlist.push({
                         prenom: this.prenom,
                         mail: this.mail,
@@ -152,12 +151,16 @@ const app = new Vue({
         },
 
         deconnexion() {
-            currentuser: ''
-            email : ''
-            password : ''
-            isconnect : false
-            currentPage : 'magasin'
+            this.currentuser = ''
+            this.email  =  ''
+            this.password = ''
+            this.isconnect = false
+            this.currentPage = 'magasin'
+            this.cart = []
+            this.$http.delete('/deletecart')
             window.location.reload()
+
+
         },
 
         addToCart(item){
@@ -201,7 +204,28 @@ const app = new Vue({
                 somme += this.cart[i].price
             }
             return somme
+        },
+
+        updateCart(item) {
+            this.$http.post('/updatecart', {
+                item
+            })
+                .then(() => {
+                    console.log('Reusi')
+                })
+                .catch(err => {
+                    console.log('error', err)
+                })
+            this.$http.get('/cart')
+                .then(cart => {
+                    console.log('affichage du panier', cart)
+                    this.cart = cart.data
+                })
+                .catch(err => {
+                    console.log('error', err)
+                })
         }
+
     }
 
 })

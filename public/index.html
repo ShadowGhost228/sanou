@@ -21,7 +21,7 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
         <div class="container">
 
-            <a class="navbar-brand waves-effect" href="index.html">
+            <a @click="currentPage = 'magasin'" class="navbar-brand waves-effect">
                 <strong class="blue-text">Sanou</strong>
             </a>
 
@@ -202,7 +202,6 @@
                 <th>Nom</th>
                 <th>Catégorie</th>
                 <th>Prix</th>
-                <th>Modifier</th>
                 <th>Suppimer</th>
             </tr>
             </thead>
@@ -213,13 +212,12 @@
                 <th scope="row">{{ item.id }}</th>
                 <td> {{ item.title }} </td>
                 <td> {{ item.category }} </td>
-                <td> {{ item.price }} </td>
-                <td><a class="waves-effect"><i class="fa fa-pencil"></i></a></td>
-                <td><a class="waves-effect"><i class="fa fa-remove"></i></a></td>
+                <td> {{ item.price }} € </td>
+                <td><a @click="updateCart(item)" class="waves-effect"><i class="fa fa-remove"></i></a></td>
             </tr>
             <tr>
                 <td class="text-center" colspan="3"> Total </td>
-                <td class="text-center" colspan="3"> {{ cartPrice() }} </td>
+                <td class="text-center" colspan="2"> {{ cartPrice() }} € </td>
             </tr>
             </tbody>
             <!--Table body-->
